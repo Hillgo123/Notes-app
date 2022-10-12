@@ -3,7 +3,6 @@ import 'package:note_app/Models/note.dart';
 import 'package:note_app/Models/note_operation.dart';
 import 'package:note_app/Screens/add_screen.dart';
 import 'package:note_app/Screens/edit_screen.dart';
-import 'package:note_app/Screens/favorite_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -39,17 +38,6 @@ class home_screen extends StatelessWidget {
         title: const Text("My Notes"),
         centerTitle: true,
         elevation: 0,
-        actions: [IconButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => favorite_screen(),));
-          },
-          tooltip: "Favorite Notes",
-          icon: const Icon(
-            Icons.list,
-            color: Colors.white,
-          )
-        ),
-        ],
       ),
       body: Consumer<note_operation>(
         builder: (context, note_operation data, child) {
@@ -80,9 +68,9 @@ class home_screen extends StatelessWidget {
                     children: <Widget> [
                       FloatingActionButton(
                         onPressed: () {
-                          Provider.of<note_operation>(context, listen: false).edit_note(index);
-                          // Navigator.push(context, MaterialPageRoute(builder: ((context) => edit_screen())));
-                          // Provider.of<note_operation>(context, listen: false).delete_note(Note);
+                          Provider.of<note_operation>(context, listen: false).edit_note(Note.title, Note.description);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => edit_screen()));
+                          Provider.of<note_operation>(context, listen: false).delete_note(Note);
                         },
                         hoverElevation: 0,
                         backgroundColor: Colors.white,
@@ -91,21 +79,6 @@ class home_screen extends StatelessWidget {
                         heroTag: null,
                         child: const Icon(
                           Icons.edit,
-                          size: 20,
-                          color: Color(0xFF7f53e0),
-                        ),
-                      ),
-                      FloatingActionButton(
-                        onPressed: () {
-                          Provider.of<note_operation>(context, listen: false).add_to_favorites(Note.title, Note.description);
-                        },
-                        hoverElevation: 0,
-                        backgroundColor: Colors.white,
-                        elevation: 0,
-                        tooltip: "Favorite Note",
-                        heroTag: null,
-                        child: const Icon(
-                          Icons.star,
                           size: 20,
                           color: Color(0xFF7f53e0),
                         ),

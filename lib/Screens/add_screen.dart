@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app/screens/home_screen.dart';
 
 
+
 class add_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,6 @@ class add_screen extends StatelessWidget {
               },
               maxLines: null,
             ),
-
             Expanded(
               child: TextField (
                 decoration: const InputDecoration(

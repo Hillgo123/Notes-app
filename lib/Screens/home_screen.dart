@@ -67,7 +67,7 @@ class home_screen extends StatelessWidget {
                       FloatingActionButton(
                         onPressed: () {
                           Provider.of<note_operation>(context, listen: false).edit_note(Note.title, Note.description);
-                          Navigator.push(context, MaterialPageRoute(builder: ((context) => edit_screen())));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => edit_screen()));
                           Provider.of<note_operation>(context, listen: false).delete_note(Note);
                         },
                         hoverElevation: 0,

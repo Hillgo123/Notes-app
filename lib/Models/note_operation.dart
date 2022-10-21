@@ -43,8 +43,7 @@ class note_operation extends ChangeNotifier{
   void edit_note(String title, String description) {
     note Note = note(title, description);
     edit_notes.add(Note);
-    notifyListeners(
-    );
+    notifyListeners();
   }
 
 }
